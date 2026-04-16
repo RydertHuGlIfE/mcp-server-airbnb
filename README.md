@@ -2,6 +2,10 @@
 
 A Python-based AI agent that uses Google Gemini as the LLM and PydanticAI as the agent framework. It integrates with MCP (Model Context Protocol) servers to extend its capabilities, including real-time time lookups and Airbnb listing searches.
 
+Apart from the jupyiter notebook a direct python file is also provided for you if you want easy testing for the server on your preferred IDE, just install the requirements and run the files and do not forget to add the api key 
+
+also a note that the version of node in notebook and python files are different 
+
 ## Features
 
 - Basic Q&A powered by Gemini
