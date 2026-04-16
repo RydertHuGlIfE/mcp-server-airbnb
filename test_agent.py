@@ -4,9 +4,10 @@ AI Agent with MCPs using Gemini and PydanticAI
 Local test script — run this in VSCode to verify before deploying to Colab.
 
 Usage:
-  1. Create a .env file with: GOOGLE_API_KEY=your_key_here
+  1. Create a .env file with: GOOGLE_API_KEY=your_key_here     
   2. pip install -r requirements.txt
   3. python test_agent.py
+  4: You guys dont need any genai module as pydantic handles that
 """
 
 import os
@@ -18,8 +19,8 @@ load_dotenv()
 
 api_key = os.environ.get("GOOGLE_API_KEY")
 if not api_key:
-    raise ValueError("❌ GOOGLE_API_KEY not found. Add it to your .env file.")
-print("✅ API key loaded from .env")
+    raise ValueError(" GOOGLE_API_KEY not found. Add it to your .env file.")
+print("API key loaded from .env")
 
 
 # ── Step 2: Create Gemini model ───────────────────────────────────────────────
@@ -28,7 +29,7 @@ from pydantic_ai.providers.google import GoogleProvider
 
 provider = GoogleProvider(api_key=api_key)
 agent_model = GoogleModel("gemini-2.5-flash", provider=provider)
-print("✅ Gemini model initialized.")
+print("Gemini model initialized.")
 
 
 # ── Step 3: Create a basic agent ──────────────────────────────────────────────
@@ -160,18 +161,18 @@ async def main():
     raw = input("Enter your choice(s) (comma-separated, e.g. 1,3): ").strip()
 
     if not raw:
-        print("⚠️  No choice entered. Exiting.")
+        print(" No choice entered. Exiting.")
         return
 
     # Parse & validate
     try:
         choices = [int(c.strip()) for c in raw.split(",")]
     except ValueError:
-        print("❌ Invalid input. Please enter numbers separated by commas.")
+        print(" Invalid input. Please enter numbers separated by commas.")
         return
 
     if 0 in choices:
-        print("👋 Bye!")
+        print("Bye!")
         return
 
     # '5' means run all
@@ -194,10 +195,10 @@ async def main():
 
     for ch in choices:
         name, _ = TEST_MAP[ch]
-        print(f"\n🚀 Running: {name}")
+        print(f"\n Running: {name}")
         await test_funcs[ch]()
 
-    print("\n✅ Selected tests passed!")
+    print("\n Selected tests passed!")
 
 
 if __name__ == "__main__":
