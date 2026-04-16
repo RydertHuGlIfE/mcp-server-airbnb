@@ -1,0 +1,3 @@
+pydantic-ai[google]
+mcp-server-time
+python-dotenv
